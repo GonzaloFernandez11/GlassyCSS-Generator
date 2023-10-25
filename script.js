@@ -1,0 +1,56 @@
+const blurInput = document.getElementById('blur');
+const transparencyInput = document.getElementById('transparency');
+const colorInput = document.getElementById('color');
+const outlineInput = document.getElementById('outline');
+const cssResult = document.getElementById('css-code');
+const glassRec = document.querySelector('glass-preview-rectangle'); // Debo usar 'querySelector' porque es una clase y no un id;
+
+// Settear valores por defecto para la vista previa
+blurInput.value = 1;
+transparencyInput.value = 0.31;
+colorInput.value = '#000';
+outlineInput.value = 0;
+
+// Inicializar el 'glass preview' con valor por defecto
+updateGlassPreview();
+
+// Añadir event listeners a los sliders
+blurInput.addEventListener('input', updateGlassPreview);
+transparencyInput.addEventListener('input', updateGlassPreview);
+outlineInput.addEventListener('input', updateGlassPreview);
+
+// Añadir event listeners al color input (color picker)
+colorInput.addEventListener('input', () => {
+    updateGlassPreview();
+    updateCSSCode();
+});
+
+function updateGlassPreview() {
+    const blurValue = blurInput.value;
+    const transparencyValue = transparencyInput.value;
+    const colorValue = colorInput.value;
+    const outlineValue = outlineInput.value;
+
+    // Actualizar la vista previa del rectángulo glass
+    glassRec.style.backdropFilter = `blur(${blurValue}px)`;
+    glassRec.style.backgroundColor = `rgba(${hexToRgb(colorValue)}, ${transparencyValue})`;
+    glassRec.style.outline = `${outlineValue}px solid ${colorValue}`;
+
+    updateCSSCode();
+}
+
+function updateCSSCode() {
+    const blurValue = blurInput.value;
+    const transparencyValue = transparencyInput.value;
+    const colorValue = colorInput.value;
+    const outlineValue = outlineInput.value;
+
+    const cssCode = `background-color: rgba(${hexToRgb(colorValue)}, ${transparencyValue});
+    \nbackdrop-filter: blur(${blurValue}px);
+    \n-webkit-backdrop-filter: blur(${blurValue}px);
+    \noutline: ${outlineValue}px solid ${colorValue};
+    \nborder-radius: 10px;
+    \nbox-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);`;
+
+    // Mostrar el código CSS generado en el textarea
+}
