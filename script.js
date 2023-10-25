@@ -1,9 +1,9 @@
-const blurInput = document.getElementById('blur');
-const transparencyInput = document.getElementById('transparency');
-const colorInput = document.getElementById('color');
-const outlineInput = document.getElementById('outline');
-const cssResult = document.getElementById('css-code');
-const glassRec = document.querySelector('glass-preview-rectangle'); // Debo usar 'querySelector' porque es una clase y no un id;
+const blurInput = document.getElementById("blur");
+const transparencyInput = document.getElementById("transparency");
+const colorInput = document.getElementById("color");
+const outlineInput = document.getElementById("outline");
+const cssResult = document.getElementById("css-code");
+const glassRec = document.querySelector(".glass-preview-rectangle"); // Debo usar 'querySelector' porque es una clase y no un id;
 
 // Settear valores por defecto para la vista previa
 blurInput.value = 1;
@@ -53,4 +53,15 @@ function updateCSSCode() {
     \nbox-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);`;
 
     // Mostrar el código CSS generado en el textarea
+    cssResult.value = cssCode;
+}
+
+// Helper function para convertir HEX en RGB
+function hexToRgb(hex) {
+    const shorthandRegax = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+    hex = hex.replace(shorthandRegax, (m, r, g, b) => r + r + g + g + b + b);
+
+    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, 
+    ${parseInt(result[3], 16)}` : null;
 }

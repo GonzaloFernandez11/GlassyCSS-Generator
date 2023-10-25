@@ -25,13 +25,14 @@ body {
 }
 
 .glass-preview {
-    margin: 20px auto;
+    /* margin: 5px auto; */
     position: relative;
     z-index: 1;
     font-family: 'Lobster';
 }
 
 .glass-preview::before {
+    margin-top: 15px;
     content: "GlassEffect";
     color: #fff;
     font-size: 130px;
@@ -44,6 +45,7 @@ body {
 
 .glass-preview-rectangle {
     background-color: rgba(0, 0, 0, 0.31);
+    margin-top: 45px;
     width: 360px;
     height: 100px;
     padding: 0 20px;
@@ -63,7 +65,7 @@ body {
     outline: 0px solid #000;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
+    margin: 20px;
     padding: 20px 10px 20px;
 }
 
@@ -141,34 +143,3 @@ input[type="color"] {
     background-color: rgba(255, 255, 255, 0.4);
     border-color: rgba(255, 255, 255, 0.6);
 }
-
-/* body {
-    background-color: hsla(0, 100%, 50%, 1);
-    background-image:
-        radial-gradient(at 40% 20%, hsla(28, 100%, 74%, 1) 0px transparent)
-        radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 1) 0px transparent)
-        radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 1) 0px transparent)
-        radial-gradient(at 80% 50%, hsla(340, 100%, 76%, 1) 0px transparent)
-        radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 1) 0px transparent)
-        radial-gradient(at 80% 100%, hsla(242, 100%, 70%, 1) 0px transparent)
-        radial-gradient(at 0% 0%, hsla(343, 100%, 76%, 1) 0px transparent);
-
-
-    display: flex; --> Permite mover los elementos de manera 'flexible' por el espacio del contenedor correspondiente
-
-    align-items: center; --> Alinea los elementos de manera vertical al centro del espacio disponible en el contenedor
-
-    justify-content: center; --> Alinea los elementos de manera horizontal al centro del espacio disponible en el contenedor
-    min-height: 100vh;
-}
-
-.container {
-    width: 400px;
-    height: 400px;
-    background-color: rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(1px);
-    outline: 2px solid #000000;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} */
