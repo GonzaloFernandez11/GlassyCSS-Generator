@@ -65,3 +65,25 @@ function hexToRgb(hex) {
     return result ? `${parseInt(result[1], 16)}, ${parseInt(result[2], 16)}, 
     ${parseInt(result[3], 16)}` : null;
 }
+
+// Añadir el event listener del botón "Copy To Clipboard"
+const copyButton = document.getElementById("copy-button");
+copyButton.addEventListener('click', copyToClipboard);
+
+function copyToClipboard() {
+    const copyText = cssResult.value;
+    const textArea = document.createElement("textarea");
+    textArea.value = copyText;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textArea);
+
+    // Cambiar el texto del botón indicando que se ha copiado
+    copyButton.textContent = "Copied!!";
+
+    // Resetear el texto del botón después de un delay corto
+    setTimeout(() => {
+        copyButton.textContent = "Copy To Clipboard";
+    }, 1000);
+}
